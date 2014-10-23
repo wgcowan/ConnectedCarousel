@@ -1,0 +1,7 @@
+/* Overrides for the .image class */
+
+div.jcarousel-wrapper a.image {
+	height: auto; 
+	margin-bottom: 1px;
+    border-bottom: inherit;
+	}
