@@ -21,4 +21,4 @@ The concarousel shortcode uses the same paramters as the shortcode carousel.
 
 The connected carousel will need CSS adjustments depending on your theme.
 
-Make sure your directory is name ShortcodeConnectedCarousel
+Change the name of your directory to ShortcodeConnectedCarousel
