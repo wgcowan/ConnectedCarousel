@@ -7,41 +7,18 @@ class ShortcodeConnectedCarouselPlugin extends Omeka_Plugin_AbstractPlugin
     public function setUp()
     {
         add_shortcode('concarousel', array('ShortcodeConnectedCarouselPlugin', 'carousel'));
-        add_shortcode('featured_carousel', array('ShortcodeConnectedCarouselPlugin', 'featuredCarousel'));
-        add_shortcode('recent_carousel', array('ShortcodeConnectedCarouselPlugin', 'recentCarousel'));
         parent::setUp();
     }
 
     public function hookPublicHead($args)
     {
-		queue_css_file('jcarousel.connected-carousels');
-		queue_js_file('jcarousel.connected-carousels');
-		queue_js_file('jquery.jcarousel.min');
- 	}
-
-    /**
-     * Easy shortcut for carousel of featured items with [featured_carousel]
-     * @param array $args
-     * @param Zend_View $view
-     * @return string HTML to display
-     */
-    public static function featuredCarousel($args, $view)
-    {
-        $args['is_featured'] = 1;
-        return self::carousel($args, $view);
-    }
-
-    /**
-     * Easy shortcut for carousel of recent items with [recent_carousel]
-     * @param array $args
-     * @param Zend_View $view
-     * @return string HTML to display
-     */
-    public static function recentCarousel($args, $view)
-    {
-        $args['sort'] = 'added';
-        $args['order'] = 'd';
-        return self::carousel($args, $view);
+        /**queue_css_file('jcarousel.connected-carousels');
+        queue_css_file('carousel');
+        queue_js_file('jcarousel.responsive');
+        queue_js_file('jquery.jcarousel.min');
+		**/
+		queue_css_file('slick');
+		queue_js_file('slick');
     }
 
     /**
@@ -57,13 +34,17 @@ class ShortcodeConnectedCarouselPlugin extends Omeka_Plugin_AbstractPlugin
             $params['featured'] = $args['is_featured'];
         }
 
-        if (isset($args['tags'])) {
-            $params['tags'] = $args['tags'];
-        }
+        if (isset($args['float'])) {
+            $params['float'] = $args['float'];
+        }else{
+			$params['float'] = 'left';
+		}
 
-        if (isset($args['user'])) {
-            $params['user'] = $args['user'];
-        }
+        if (isset($args['width'])) {
+            $params['width'] = $args['width'];
+        }else{
+			$params['width'] = '100%';
+		}
 
         if (isset($args['ids'])) {
             $params['range'] = $args['ids'];
@@ -83,7 +64,10 @@ class ShortcodeConnectedCarouselPlugin extends Omeka_Plugin_AbstractPlugin
             $limit = 10;
         }
 		$params['hasImage'] = 1;
-		$ids = explode(',',$args['ids']);
+		$result = preg_replace_callback('/(\d+)-(\d+)/', function($m) {
+		    return implode(',', range($m[1], $m[2]));
+		}, $args['ids']);
+		$ids = explode(',',$result);
 		foreach ($ids as $key => $file){
 	
         	$files[$key] = get_record_by_id('File', $file);
@@ -110,7 +94,7 @@ class ShortcodeConnectedCarouselPlugin extends Omeka_Plugin_AbstractPlugin
                 $configs['autoscroll']['interval'] = (int) $args['interval'];
             }
         }
-        $html = $view->partial('carousel.php', array('files' => $files, 'id_suffix' => $id_suffix, 'configs' => $configs));
+        $html = $view->partial('carousel.php', array('files' => $files, 'id_suffix' => $id_suffix, 'params' => $args, 'configs' => $configs));
         $id_suffix++;
         return $html;
     }
