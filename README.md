@@ -7,7 +7,7 @@ Repository for Omeka shortcode plugin that creates a connected carousel of file 
 
 Use:
 
-[concarousel ids=12,15,45,11]
+[concarousel ids=12,15,45,11,17-23]
 
 The ids should point to image files that will be used to construct the carousel. The carousel will consist of a thumbnail carousel that you can navigate through with a carousel above that will slide to the image selected in the thumbnail carousel.
 
