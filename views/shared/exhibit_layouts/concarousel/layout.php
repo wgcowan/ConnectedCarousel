@@ -23,22 +23,20 @@ $width = isset($options['carousel-width'])
 $Nav = isset($options['navs'])
 	? html_escape($options['navs'])
 	: 'true';
-if ($Nav == 'true'){
+if ($Nav == 'true' || $options['start-slideshow'] == 'true'){
 	$shoArrows = 'false';
-	$setPos = 'block';
 }else{
 	$shoArrows = 'true'; 
+};
+if ($Nav == 'true'){
+	$setPos = 'block';
+}else{
 	$setPos = 'none';
 };
 if ($width != '100%'){
 	$tempwidth = '95%';
 }else{
 	$tempwidth = '100%';
-};
-if ($options['start-slideshow'] == 'true'){
-	$shoArrows = 'false';
-}else{
-	$shoArrows = 'true';
 };
 ?>
 <div  style="max-width:100%; max-height:100%; width:<?php echo $width;?>; float:<?php echo $float;?>;">

@@ -14,22 +14,20 @@ $width = isset($params['width'])
 $Nav = isset($params['noNav'])
 	? html_escape($params['noNav'])
 	: 'true';
-if ($Nav == 'true'){
+if ($Nav == 'true' || $configs['autoPlay'] == 'true'){
 	$shoArrows = 'false';
-	$setPos = 'block';
 }else{
 	$shoArrows = 'true'; 
+};
+if ($Nav == 'true'){
+	$setPos = 'block';
+}else{
 	$setPos = 'none';
 };
 if ($width != '100%'){
 	$tempwidth = '95%';
 }else{
 	$tempwidth = '100%';
-};
-if ($configs['autoPlay'] == 'true'){
-	$shoArrows = 'false';
-}else{
-	$shoArrows = 'true';
 };
 ?>
 
