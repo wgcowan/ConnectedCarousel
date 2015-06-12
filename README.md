@@ -81,13 +81,13 @@ files_for_item(array('imageSize' => 'fullsize')); ?> <?php endif; ?>
 	<?php echo $this->shortcodes('[concarousel ids='.metadata('item','id').' center=false slides=3 showdescription=true captionposition=right width=100% float=right slideshow=false speed=2000 focus=true navigation=false navbar=false]');?> 
  <?php endif;?> 
 	
-	If any item has multiple images associated with it, the carousel would display arrows to cycle through them or you could use the slideshow option to automatically display the images.
+If any item has multiple images associated with it, the carousel would display arrows to cycle through them or you could use the slideshow option to automatically display the images.
 	
-	However, if your items have a mix of single image files and multiple image files you might not want the thumbnail navigation bar to appear if the item only has a single image. You can check the “file count” property to see how many files an item has and then set the navbar option to true or false depending on the response. Here is some sample code to do that. The new code is highlighted below. It would need to be inserted into the show.php file at the same place as the example above.
+However, if your items have a mix of single image files and multiple image files you might not want the thumbnail navigation bar to appear if the item only has a single image. You can check the “file count” property to see how many files an item has and then set the navbar option to true or false depending on the response. Here is some sample code to do that. The new code is highlighted below. It would need to be inserted into the show.php file at the same place as the example above.
 
-	<?php echo $this->shortcodes('[concarousel ids='.metadata('item','id').' center=true slides=2 showdescription=false captionposition=right width=100% float=right slideshow=false speed=2000 focus=true navigation=false navbar='.(metadata('item','file count') > 1 ? 'true' : 'false').']');?>
+<?php echo $this->shortcodes('[concarousel ids='.metadata('item','id').' center=true slides=2 showdescription=false captionposition=right width=100% float=right slideshow=false speed=2000 focus=true navigation=false navbar='.(metadata('item','file count') > 1 ? 'true' : 'false').']');?>
 
-	These are just a couple of examples of what you can do with the Shortcode Connected Carousel beyond Exhibits and Simple Pages. You could insert logic for controlling the width or whether or not a slideshow starts. At any rate, there is a lot of potential for controlling the display of this information for exhibits, for simple pages and for showing items.
+These are just a couple of examples of what you can do with the Shortcode Connected Carousel beyond Exhibits and Simple Pages. You could insert logic for controlling the width or whether or not a slideshow starts. At any rate, there is a lot of potential for controlling the display of this information for exhibits, for simple pages and for showing items.
 
 
  Credits
