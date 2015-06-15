@@ -106,9 +106,9 @@ class ShortcodeConnectedCarouselPlugin extends Omeka_Plugin_AbstractPlugin
 		}, $args['ids']);
 		$ids = explode(',',$result);
 		foreach ($ids as $key => $item){
-	
-        	$items[$key] = get_record_by_id('item', $item);
-		
+			if (get_record_by_id('item',$item)):
+        		$items[$key] = get_record_by_id('item', $item);
+			endif;
 		};
        //handle the configs for Slick
         //$configs = array('slick' => array());
