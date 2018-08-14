@@ -1,6 +1,4 @@
-<<<<<<< HEAD ConnectedCarousel =================
-
- Connected Carousel for Omeka
+Connected Carousel for Omeka
 
  The basic connected carousel uses the thumbnails for a set of images as a navigation bar with the full size image displayed below.
 By clicking on a thumbnail or dragging the navigation bar, you can move from image to image. The only parameter required for the
