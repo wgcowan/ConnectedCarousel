@@ -12,7 +12,7 @@ displayed. So if an item has five files associated with it, all five files show 
  An added feature is that now when you click on the image, instead of going to a page with just the image, you get a lightbox
 effect, with the image popping up on the same page and then darkening the rest of the page as a lightbox does. You can move forward
 in lightbox mode by clicking the arrows. The carousel keeps track of your position in the carousel and when you close the lightbox,
-with the close button or clicking outside the lightbox, you will be takenin the carousel to the image in the lightbox.
+with the close button or clicking outside the lightbox, you will be taken in the carousel to the image in the lightbox.
 
  Use as a Shortcode
 
