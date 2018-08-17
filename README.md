@@ -19,42 +19,44 @@ with the close button or clicking outside the lightbox, you will be taken in the
  While “ids =“ is the only required parameter, there are a variety of parameters that allow you to configure exactly how the
 carousel displays and behaves. This is a sample shortcode entry as it might appear on a Simple Page.
 
- [concarousel ids=1789,1801,1812,1868-1872 center=true slides=5 showdescription=false captionposition=center width=100% float=left
-slideshow=false speed=2500 focus=true navigation=false navbar=true]
+	 [concarousel ids=1789,1801,1812,1868-1872 center=true slides=5 showdescription=false captionposition=center width=100% float=left
+	slideshow=false speed=2500 focus=true navigation=false navbar=true]
 
  The parameters are listed below with a brief description.
 
-ids=1789,1801,1812,1868-1872 
-This shows an ids parameter with a several individual items, followed by a range. All items in the
-range that exist and have images will be displayed. In addition, all images for all items will be displayed, even items with
-multiple images.
- 
-center=true 
-This determines whether the thumbnail in the navigation bar is in the center of the navigation bar
-(true) or whether the thumbnail is on the left end (i.e. the first item) of the navigation bar (false). 
-slides=5 This parameter determines how many full slides will display in the navigation bar. There might be partial slides to the left or right on the navigation bar but there will be 5 full slides displayed on the bar. As a general rule, you should always use an odd number of slides if center = true so that you have an even number to the right and left of the center slide.
+	ids=1789,1801,1812,1868-1872 
+	This shows an ids parameter with a several individual items, followed by a range. All items in the
+	range that exist and have images will be displayed. In addition, all images for all items will be displayed, even items with
+	multiple images.
 
-showdescription=false 
-This will display the descriptive metadata below the full size image. This uses the same code that show.php does so it will behave in a similar manner. I.e. it will only display fields with values if that is set in Settings and it pays attention to the setting in
-other plugins such as Hide Elements and will display elements as set by that plugin. 
+	center=true 
+	This determines whether the thumbnail in the navigation bar is in the center of the navigation bar
+	(true) or whether the thumbnail is on the left end (i.e. the first item) of the navigation bar (false). 
+	slides=5 This parameter determines how many full slides will display in the navigation bar. There might be partial slides to the left or right on the navigation bar but there will be 5 full slides displayed on the bar. As a general rule, you should always use an odd number of slides if center = true so that you have an even number to the right and left of the center slide.
 
-captionposition=center 
-This parameter has four values: left, center, right and none. The caption appears below the full size image on the left, center or right depending on the value of this parameter. The default caption is the Dublin Core Description field. If the Dublin Core Description field is not empty for the image file, it uses that value as the caption. If it is empty, then it uses the Dublin Core Description field for the item that the image belongs to. If you have showdescription = true, then you may not want the caption to display. Set captionpostion = none and no caption appears below the image. width=100% This parameter sets the size of your carousel. Any value less than 100% will cause the both the width and the height of the carousel to be reduced. And for most themes, any text on the page will then float next to the carousel.
- 
-float=left 
-This parameter is used in conjunction with the width parameter. If the width parameter is less than 100%, then you can use this parameter to determine whether the carousel will float to the left side or the right side of the page.
+	showdescription=false 
+	This will display the descriptive metadata below the full size image. This uses the same code that show.php does so it will behave in a similar manner. I.e. it will only display fields with values if that is set in Settings and it pays attention to the setting in
+	other plugins such as Hide Elements and will display elements as set by that plugin. 
 
-slideshow=false 
-This parameter allows a simple animated slide show. To pause the slideshow, just move the mouse cursor over the navigation bar. To restart, just move the mouse cursor off the navigation bar. speed=2500 And this parameter determines the speed of the slideshow. The current setting is about 2 seconds. 
+	captionposition=center 
+	This parameter has four values: left, center, right and none. The caption appears below the full size image on the left, center or right depending on the value of this parameter. The default caption is the Dublin Core Description field. If the Dublin Core Description field is not empty for the image file, it uses that value as the caption. If it is empty, then it uses the Dublin Core Description field for the item that the image belongs to. If you have showdescription = true, then you may not want the caption to display. Set captionpostion = none and no caption appears below the image. 
 
-focus=true 
-This parameter is related to slideshows in the sense that when set to true, this allows you to select an image or scroll to an image in the navigation bar. If you are doing a slide show, you may not want the user to be able interrupt the slideshow in that manner so you can set focus = false and clicking or sliding the navigation bar will not disrupt the slideshow. 
+	width=100% This parameter sets the size of your carousel. Any value less than 100% will cause the both the width and the height of the carousel to be reduced. And for most themes, any text on the page will then float next to the carousel.
 
-navigation=false 
-It is possible to have a line of dots below the navigation bar that allows users to easily jump to the beginning, the end or any slide. Works best with 15 or fewer slides in the carousel. 
+	float=left 
+	This parameter is used in conjunction with the width parameter. If the width parameter is less than 100%, then you can use this parameter to determine whether the carousel will float to the left side or the right side of the page.
 
-navbar=true 
-This parameter can be used to turn off the navigation thumbnail bar in the carousel and just display the full size image. When this is set to false, arrows will appear on the full size image so that you can navigate to the next or previous image. After a short pause, these arrows disappear but will reappear when you move the mouse over the image.
+	slideshow=false 
+	This parameter allows a simple animated slide show. To pause the slideshow, just move the mouse cursor over the navigation bar. To restart, just move the mouse cursor off the navigation bar. speed=2500 And this parameter determines the speed of the slideshow. The current setting is about 2 seconds. 
+
+	focus=true 
+	This parameter is related to slideshows in the sense that when set to true, this allows you to select an image or scroll to an image in the navigation bar. If you are doing a slide show, you may not want the user to be able interrupt the slideshow in that manner so you can set focus = false and clicking or sliding the navigation bar will not disrupt the slideshow. 
+
+	navigation=false 
+	It is possible to have a line of dots below the navigation bar that allows users to easily jump to the beginning, the end or any slide. Works best with 15 or fewer slides in the carousel. 
+
+	navbar=true 
+	This parameter can be used to turn off the navigation thumbnail bar in the carousel and just display the full size image. When this is set to false, arrows will appear on the full size image so that you can navigate to the next or previous image. After a short pause, these arrows disappear but will reappear when you move the mouse over the image.
 
  Use in an Exhibit
 
@@ -70,20 +72,21 @@ down selectors so the choices are not as flexible.
 the carousel with an item involves modifying show.php and replacing the line of code that displays an image (it often looks like
 this)
 
- <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?> <?php echo
-files_for_item(array('imageSize' => 'fullsize')); ?> <?php endif; ?>
+	 <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?>
+	 <?php echo files_for_item(array('imageSize' => 'fullsize')); ?> 
+	 <?php endif; ?>
 
  with the following:
 
- <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?> 
-	<?php echo $this->shortcodes('[concarousel ids='.metadata('item','id').' center=false slides=3 showdescription=true captionposition=right width=100% float=right slideshow=false speed=2000 focus=true navigation=false navbar=false]');?> 
- <?php endif;?> 
+	 <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?> 
+		<?php echo $this->shortcodes('[concarousel ids='.metadata('item','id').' center=false slides=3 showdescription=true captionposition=right width=100% float=right slideshow=false speed=2000 focus=true navigation=false navbar=false]');?> 
+	 <?php endif;?> 
 	
 If any item has multiple images associated with it, the carousel would display arrows to cycle through them or you could use the slideshow option to automatically display the images.
 	
 However, if your items have a mix of single image files and multiple image files you might not want the thumbnail navigation bar to appear if the item only has a single image. You can check the “file count” property to see how many files an item has and then set the navbar option to true or false depending on the response. Here is some sample code to do that. The new code is highlighted below. It would need to be inserted into the show.php file at the same place as the example above.
 
-<?php echo $this->shortcodes('[concarousel ids='.metadata('item','id').' center=true slides=2 showdescription=false captionposition=right width=100% float=right slideshow=false speed=2000 focus=true navigation=false navbar='.(metadata('item','file count') > 1 ? 'true' : 'false').']');?>
+	<?php echo $this->shortcodes('[concarousel ids='.metadata('item','id').' center=true slides=2 showdescription=false captionposition=right width=100% float=right slideshow=false speed=2000 focus=true navigation=false navbar='.(metadata('item','file count') > 1 ? 'true' : 'false').']');?>
 
 These are just a couple of examples of what you can do with the Shortcode Connected Carousel beyond Exhibits and Simple Pages. You could insert logic for controlling the width or whether or not a slideshow starts. At any rate, there is a lot of potential for controlling the display of this information for exhibits, for simple pages and for showing items.
 
