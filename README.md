@@ -135,7 +135,7 @@ However, if your items have a mix of single image files and multiple image files
 		speed=2000 
 		focus=true 
 		navigation=false 
-	navbar='.(metadata('item','file count') > 1 ? 'true' : 'false').']'
+		navbar='.(metadata('item','file count') > 1 ? 'true' : 'false').']'
 	);?>
 
 These are just a couple of examples of what you can do with the Shortcode Connected Carousel beyond Exhibits and Simple Pages. You could insert logic for controlling the width or whether or not a slideshow starts. At any rate, there is a lot of potential for controlling the display of this information for exhibits, for simple pages and for showing items.
