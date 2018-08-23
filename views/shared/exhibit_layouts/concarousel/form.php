@@ -61,19 +61,6 @@ $options = $block->getOptions();
         ?>
     </div>
 
-	<div class="dots">
-        <?php echo $this->formLabel($formStem . '[options][dots]', __('Use Navigation')); ?>
-        <?php
-        echo $this->formSelect($formStem . '[options][dots]',
-            @$options['dots'], array(),
-            array(
-                'true' => __('Yes'),
-                'false' => __('No')
-            ));
-		echo __('&nbsp;&nbsp;&nbsp;&nbsp;navigation dots appear below the thumbnails.');
-        ?>
-    </div>
-
     <div class="start-slideshow">
         <?php echo $this->formLabel($formStem . '[options][start-slideshow]', __('Start Slideshow')); ?>
         <?php
