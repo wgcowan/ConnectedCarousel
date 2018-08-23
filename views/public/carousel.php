@@ -32,7 +32,7 @@ if ($width != '100%'){
 ?>
 
 <div style="max-width:100%; max-height:100%; width:<?php echo $width;?>; float:<?php echo $float;?>; ">
-	<div class="carousel-navigation" style="max-width:100%; max-height:100%; width:<?php echo $tempwidth;?>; display:<?php echo $setPos;?>">
+	<div class="carousel-navigation<?php echo $id_suffix;?>" style="max-width:100%; max-height:100%; width:<?php echo $tempwidth;?>; display:<?php echo $setPos;?>">
 		<?php foreach($items as $item): 
 			set_current_record('Item', $item);
 			if (metadata($item,'has files'))
@@ -47,7 +47,7 @@ if ($width != '100%'){
 		<?php endforeach; ?>
 	</div>		
 
-	<div class="carousel-stage" style="max-width:100%; max-height:100%; width:<?php echo $tempwidth;?>;" >
+	<div class="carousel-stage<?php echo $id_suffix;?>" style="max-width:100%; max-height:100%; width:<?php echo $tempwidth;?>;" >
 		<?php foreach($items as $item):
 			set_current_record('Item', $item);
 			if (metadata($item,'has files'))
@@ -55,7 +55,7 @@ if ($width != '100%'){
 				$itemFiles = $item->Files;
 				foreach($itemFiles as $itemfile):?>
 				<div>
-					<?php echo file_markup($itemfile,array('imageSize' => 'fullsize','linkToFile' => true, 'imgAttributes' => array('max-height'=>'100%','max-width'=>'100%','width'=>'100%')));?>
+					<?php echo file_markup($itemfile,array('imageSize' => 'fullsize','linkToFile' => true, 'imgAttributes' => array('max-height'=>'100%','max-width'=>'100%','width'=>'100%', 'class'=>'full imgFile'.$id_suffix)));?>
 					<?php if ($captionPosition != 'none'){ ?>
 						
 					<p class="desc caption-<?php echo $captionPosition; ?>">			
@@ -81,9 +81,9 @@ if ($width != '100%'){
 	
 <script type="text/javascript">
 	jQuery(document).ready(function(){
-		jQuery('.carousel-stage')
+		jQuery('.carousel-stage<?php echo $id_suffix;?>')
 		        .on('init', function(event, slick){
-					jQuery('img.full')[0].onmouseover = (function() {
+					jQuery('img.imgFile<?php echo $id_suffix;?>')[0].onmouseover = (function() {
 					    var onmousestop = function() {
 					       jQuery('input.slick-next').css('display', 'none');
 					       jQuery('input.slick-prev').css('display', 'none');
@@ -97,9 +97,9 @@ if ($width != '100%'){
 					    };
 					})();
 		        });
-	jQuery('.carousel-navigation').slick({
+	jQuery('.carousel-navigation<?php echo $id_suffix;?>').slick({
 		centerPadding: '60px',
-	    asNavFor: '.carousel-stage',
+	    asNavFor: '.carousel-stage<?php echo $id_suffix;?>',
 		accessibility:true,    
 		swipeToSlide: true,
 		variableWidth: false,
@@ -114,7 +114,7 @@ if ($width != '100%'){
 		prevArrow: '<input class="slick-prev" type="submit" value="&laquo;" />',
 		nextArrow: '<input class="slick-next" type="submit" value="&raquo;" />',
 	});
-	 jQuery('.carousel-stage').slick({
+	 jQuery('.carousel-stage<?php echo $id_suffix;?>').slick({
 	    slidesToShow: 1,
 	    slidesToScroll: 1,
 	    arrows: <?php echo $shoArrows;?>,
@@ -122,36 +122,36 @@ if ($width != '100%'){
 		centerMode: true,
 		variableWidth: false,
 		adaptiveHeight: true,
-	    asNavFor: '.carousel-navigation',
+	    asNavFor: '.carousel-navigation<?php echo $id_suffix;?>',
 		prevArrow: '<input class="slick-prev" type="submit" value="&laquo;" />',
 		nextArrow: '<input class="slick-next" type="submit" value="&raquo;" />',
 	});
-	
-		jQuery(".download-file")
-			.attr('rel', 'gallery')
-			.fancybox({
-		   		openEffect	: 'elastic',
-		    	closeEffect	: 'elastic',
-				fitToView: 'true',
-				arrows: 'true',
-
-		    	helpers : {
-		    		title : {
-		    			type : 'inside'
-		    		}
-		    	},
-				'beforeClose': function(current){
-							jQuery('.carousel-navigation').slick('slickGoTo',this.index);
-					}
-		});
 		
-		jQuery('.carousel-stage').on('afterChange',function(event, slick, currentSlide, nextSlide){
+	jQuery(".imgFile<?php echo $id_suffix;?>").parent()
+		.attr('rel', 'gallery<?php echo $id_suffix;?>')
+		.fancybox({
+	   		openEffect	: 'elastic',
+	    	closeEffect	: 'elastic',
+			fitToView: 'true',
+			arrows: 'true',
+
+	    	helpers : {
+	    		title : {
+	    			type : 'inside'
+	    		}
+	    	},
+			'beforeClose': function(current){
+				jQuery('.carousel-navigation<?php echo $id_suffix;?>').slick('slickGoTo',this.index);
+			}
+	});
+		
+	jQuery('.carousel-stage<?php echo $id_suffix;?>').on('afterChange',function(event, slick, currentSlide, nextSlide){
 			
-		jQuery('img.full')[jQuery('.carousel-stage').slick('slickCurrentSlide')].onmouseover = (function() {
-		    var onmousestop = function() {
-		       jQuery('input.slick-next').css('display', 'none');
-		       jQuery('input.slick-prev').css('display', 'none');
-		    }, thread;
+	jQuery('img.imgFile<?php echo $id_suffix;?>')[jQuery('.carousel-stage<?php echo $id_suffix;?>').slick('slickCurrentSlide')].onmouseover = (function() {
+		var onmousestop = function() {
+			jQuery('input.slick-next').css('display', 'none');
+		    jQuery('input.slick-prev').css('display', 'none');
+		}, thread;
 
 	    return function() {
 	       jQuery('input.slick-next').css('display', 'block');
