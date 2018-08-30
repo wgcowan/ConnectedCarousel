@@ -19,8 +19,18 @@ with the close button or clicking outside the lightbox, you will be taken in the
  While “ids =“ is the only required parameter, there are a variety of parameters that allow you to configure exactly how the
 carousel displays and behaves. This is a sample shortcode entry as it might appear on a Simple Page.
 
-	 [concarousel ids=1789,1801,1812,1868-1872 center=true slides=5 showdescription=false captionposition=center width=100% float=left
-	slideshow=false speed=2500 focus=true navigation=false navbar=true]
+	 [concarousel 
+	 ids=1789,1801,1812,1868-1872 
+	 center=true 
+	 slides=5 
+	 showdescription=false 
+	 captionposition=center 
+	 width=100% float=left
+	 slideshow=false 
+	 speed=2500 
+	 focus=true 
+	 navigation=false 
+	 navbar=true]
 
  The parameters are listed below with a brief description.
 
